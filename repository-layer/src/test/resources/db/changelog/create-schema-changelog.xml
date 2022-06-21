@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="202010211812" author="Daniel Sipos">
+        <createTable tableName="message">
+            <column name="id" type="bigint" >
+                <constraints primaryKey="true" primaryKeyName="message_id_pk"/>
+            </column>
+            <column name="message" type="varchar(250)"/>
+            <column name="from_user" type="bigint"/>
+            <column name="to_user" type="bigint"/>
+            <column name="insertion_date_time" type="timestamp"/>
+        </createTable>
+        <createTable tableName="user">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="user_id_pk"/>
+            </column>
+            <column name="email_address" type="varchar(250)"/>
+            <column name="full_name" type="varchar(250)"/>
+        </createTable>
+        <addAutoIncrement tableName="message" columnName="id" columnDataType="bigint" startWith="1"
+                          incrementBy="1"/>
+        <addAutoIncrement tableName="user" columnName="id" columnDataType="bigint" startWith="1"
+                          incrementBy="1"/>
+        <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1"/>
+
+        <addForeignKeyConstraint baseTableName="message" baseColumnNames="from_user"
+                                 constraintName="fk_message_from_user"
+                                 referencedTableName="user" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="message" baseColumnNames="to_user"
+                                 constraintName="fk_message_to_user"
+                                 referencedTableName="user" referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

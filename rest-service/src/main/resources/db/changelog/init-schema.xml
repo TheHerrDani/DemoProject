@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <changeSet id="202010211813-1" author="Daniel Sipos">
+        <insert tableName="user">
+            <column name="full_name">Sipos Daniel</column>
+            <column name="email_address">sipos.herr.dani@gmail.com</column>
+        </insert>
+        <insert tableName="user">
+            <column name="full_name">Fekete Emil</column>
+            <column name="email_address">emil.fekete@gmail.com</column>
+        </insert>
+        <insert tableName="user">
+            <column name="full_name">Krajla Nora</column>
+            <column name="email_address">krajlanora@gmail.com</column>
+        </insert>
+    </changeSet>
+    <changeSet id="202010211813-2" author="Daniel Sipos">
+        <insert tableName="message">
+            <column name="from_user">1</column>
+            <column name="to_user">2</column>
+            <column name="message">Hello!</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:14:15"/>
+        </insert>
+        <insert tableName="message">
+            <column name="from_user">2</column>
+            <column name="to_user">1</column>
+            <column name="message">Hy</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:15:15"/>
+        </insert>
+        <insert tableName="message">
+            <column name="from_user">1</column>
+            <column name="to_user">2</column>
+            <column name="message">Whats up?</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:16:15"/>
+        </insert>
+        <insert tableName="message">
+            <column name="from_user">1</column>
+            <column name="to_user">3</column>
+            <column name="message">Buy some cat food pls</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:17:15"/>
+        </insert>
+        <insert tableName="message">
+            <column name="from_user">3</column>
+            <column name="to_user">1</column>
+            <column name="message">Ok</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:17:20"/>
+        </insert>
+        <insert tableName="message">
+            <column name="from_user">1</column>
+            <column name="to_user">1</column>
+            <column name="message">Bye Bye</column>
+            <column name="insertion_date_time" valueDate="2022-05-28T13:17:20"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

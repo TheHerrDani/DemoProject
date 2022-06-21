@@ -1,0 +1,30 @@
+googleJwkProvider: https://www.googleapis.com/oauth2/v3/certs
+audience: 95959189499-6vcu2tpirp5lm6dc48glahrllrf20khg.apps.googleusercontent.com
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  h2:
+    console.enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: accounts.google.com
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master-test.xml
+logging:
+  level:
+    org:
+      springframework:
+        web: TRACE
+        security: TRACE
