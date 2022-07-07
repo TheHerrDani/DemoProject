@@ -11,6 +11,7 @@ public class RepositoryTestConstants {
       LocalDateTime.of(2022, Month.MAY, 28, 13, 14, 15);
   public static final String NEW_EMAIL_ADDRESS = "straw_hat_luffy@gmail.com";
   public static final String NEW_NAME = "Monkey D. Luffy";
+  public static final String TEST_NAME = "Uzumaki Naruto";
   public static final String[] FULL_NAMES =
-      new String[] {"Sipos Daniel", "Fekete Emil", "Krajla Nora"};
+      new String[] {"Uzumaki Naruto", "Kurosaki Ichigo", "Monkey D. Luffy"};
 }

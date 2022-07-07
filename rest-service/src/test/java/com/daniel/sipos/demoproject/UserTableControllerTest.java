@@ -3,7 +3,7 @@ package com.daniel.sipos.demoproject;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.All_USER_JSON;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.NEW_EMAIL_ADDRESS;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.NEW_NAME;
-import static com.daniel.sipos.demoproject.ControllerTestConstants.SIPOS_HERR_DANI_GMAIL_COM;
+import static com.daniel.sipos.demoproject.ControllerTestConstants.TEST_EMAIL_ADDRESS_ONE;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.TEST_USER_EMAIL;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,7 +28,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
 @Transactional
-public class UserControllerTest {
+public class UserTableControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
@@ -50,7 +50,7 @@ public class UserControllerTest {
   public void findByEmail() throws Exception {
     this.mockMvc.perform(
             get("/api/user/find-by-email")
-                .param("emailAddress", SIPOS_HERR_DANI_GMAIL_COM))
+                .param("emailAddress", TEST_EMAIL_ADDRESS_ONE))
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().string(containsString(TEST_USER_EMAIL)));

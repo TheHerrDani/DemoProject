@@ -22,7 +22,7 @@ public class QMessage extends EntityPathBase<Message> {
 
     public static final QMessage message1 = new QMessage("message1");
 
-    public final QUser fromUser;
+    public final QUserTable fromUserTable;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -30,7 +30,7 @@ public class QMessage extends EntityPathBase<Message> {
 
     public final StringPath message = createString("message");
 
-    public final QUser toUser;
+    public final QUserTable toUserTable;
 
     public QMessage(String variable) {
         this(Message.class, forVariable(variable), INITS);
@@ -50,8 +50,8 @@ public class QMessage extends EntityPathBase<Message> {
 
     public QMessage(Class<? extends Message> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.fromUser = inits.isInitialized("fromUser") ? new QUser(forProperty("fromUser")) : null;
-        this.toUser = inits.isInitialized("toUser") ? new QUser(forProperty("toUser")) : null;
+        this.fromUserTable = inits.isInitialized("fromUserTable") ? new QUserTable(forProperty("fromUserTable")) : null;
+        this.toUserTable = inits.isInitialized("toUserTable") ? new QUserTable(forProperty("toUserTable")) : null;
     }
 
 }

@@ -14,7 +14,7 @@
             <column name="to_user" type="bigint"/>
             <column name="insertion_date_time" type="timestamp"/>
         </createTable>
-        <createTable tableName="user">
+        <createTable tableName="user_table">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" primaryKeyName="user_id_pk"/>
             </column>
@@ -23,15 +23,15 @@
         </createTable>
         <addAutoIncrement tableName="message" columnName="id" columnDataType="bigint" startWith="1"
                           incrementBy="1"/>
-        <addAutoIncrement tableName="user" columnName="id" columnDataType="bigint" startWith="1"
+        <addAutoIncrement tableName="user_table" columnName="id" columnDataType="bigint" startWith="1"
                           incrementBy="1"/>
         <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="1"/>
 
         <addForeignKeyConstraint baseTableName="message" baseColumnNames="from_user"
                                  constraintName="fk_message_from_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="user_table" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="message" baseColumnNames="to_user"
                                  constraintName="fk_message_to_user"
-                                 referencedTableName="user" referencedColumnNames="id"/>
+                                 referencedTableName="user_table" referencedColumnNames="id"/>
     </changeSet>
 </databaseChangeLog>

@@ -5,15 +5,15 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
     <changeSet id="202010211813-1" author="Daniel Sipos">
-        <insert tableName="user">
+        <insert tableName="user_table">
             <column name="full_name">Uzumaki Naruto</column>
             <column name="email_address">uzumaki.naruto@gmail.com</column>
         </insert>
-        <insert tableName="user">
+        <insert tableName="user_table">
             <column name="full_name">Kurosaki Ichigo</column>
             <column name="email_address">kurusaki.ichigo@gmail.com</column>
         </insert>
-        <insert tableName="user">
+        <insert tableName="user_table">
             <column name="full_name">Monkey D. Luffy</column>
             <column name="email_address">monkey.d.luffy@gmail.com</column>
         </insert>

@@ -1,7 +1,7 @@
 package com.daniel.sipos.demoproject.repositories;
 
-import com.daniel.sipos.demoproject.entities.QUser;
-import com.daniel.sipos.demoproject.entities.User;
+import com.daniel.sipos.demoproject.entities.QUserTable;
+import com.daniel.sipos.demoproject.entities.UserTable;
 import com.daniel.sipos.demoproject.repositories.dataaccess.UserDataAccess;
 import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import java.util.List;
@@ -20,19 +20,19 @@ public class UserRepository {
   @Autowired
   HibernateQueryFactory queryFactory;
 
-  private final QUser qUser = QUser.user;
+  private final QUserTable qUser = QUserTable.userTable;
 
-  public User saveUser(User user) {
-    return userDataAccess.saveAndFlush(user);
+  public UserTable saveUser(UserTable userTable) {
+    return userDataAccess.saveAndFlush(userTable);
   }
 
-  public Optional<User> findUserByEmail(String email) {
+  public Optional<UserTable> findUserByEmail(String email) {
     return Optional.ofNullable(queryFactory.selectFrom(qUser)
         .where(qUser.emailAddress.eq(email))
         .fetchFirst());
   }
 
-  public List<User> findUsers() {
+  public List<UserTable> findUsers() {
     return queryFactory.selectFrom(qUser).fetch();
   }
 }

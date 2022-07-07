@@ -2,7 +2,7 @@ package com.daniel.sipos.demoproject.repositories;
 
 import com.daniel.sipos.demoproject.entities.Message;
 import com.daniel.sipos.demoproject.entities.QMessage;
-import com.daniel.sipos.demoproject.entities.QUser;
+import com.daniel.sipos.demoproject.entities.QUserTable;
 import com.daniel.sipos.demoproject.repositories.dataaccess.MessageDataAccess;
 import com.querydsl.jpa.hibernate.HibernateQueryFactory;
 import java.time.LocalDateTime;
@@ -22,9 +22,9 @@ public class MessageRepository {
 
   private final QMessage qMessage = QMessage.message1;
 
-  private final QUser fromUser = new QUser("fromUser");
+  private final QUserTable fromUser = new QUserTable("fromUser");
 
-  private final QUser toUser = new QUser("toUser");
+  private final QUserTable toUser = new QUserTable("toUser");
 
   public Message saveMessage(Message message) {
     return dataAccess.saveAndFlush(message);
@@ -33,8 +33,8 @@ public class MessageRepository {
   public List<Message> findAllMessagesByUsers(String fromEmail, String toEmail) {
     return queryFactory
         .selectFrom(qMessage)
-        .join(fromUser).on(fromUser.id.eq(qMessage.fromUser.id))
-        .join(toUser).on(toUser.id.eq(qMessage.toUser.id))
+        .join(fromUser).on(fromUser.id.eq(qMessage.fromUserTable.id))
+        .join(toUser).on(toUser.id.eq(qMessage.toUserTable.id))
         .where(fromUser.emailAddress.eq(fromEmail).and(toUser.emailAddress.eq(toEmail))
             .or(fromUser.emailAddress.eq(toEmail).and(toUser.emailAddress.eq(fromEmail))))
         .orderBy(qMessage.insertionDateTime.asc())

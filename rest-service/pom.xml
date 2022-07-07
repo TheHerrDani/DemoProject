@@ -20,6 +20,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.6.7</version>
         </dependency>
         <!--LOCAL DEPENDENCIES-->
         <dependency>
@@ -58,7 +59,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${project.version}</version>
+                <version>2.7.0</version>
                 <configuration>
                     <layers>
                         <enabled>true</enabled>

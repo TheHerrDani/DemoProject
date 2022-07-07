@@ -18,7 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Entity
 @Builder
-public class User {
+public class UserTable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -34,10 +34,10 @@ public class User {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof User user)) {
+    if (!(o instanceof UserTable userTable)) {
       return false;
     }
-    return Objects.equals(getId(), user.getId());
+    return Objects.equals(getId(), userTable.getId());
   }
 
   @Override

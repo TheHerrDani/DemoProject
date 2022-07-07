@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureMockMvc
 public class VersionControllerTest {
 
-  public static final String VERSION = "2.6.7";
+  public static final String VERSION = "2.7.0";
   @Autowired
   private MockMvc mockMvc;
 

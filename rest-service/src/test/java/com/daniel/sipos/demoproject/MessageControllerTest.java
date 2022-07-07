@@ -2,9 +2,9 @@ package com.daniel.sipos.demoproject;
 
 
 import static com.daniel.sipos.demoproject.ControllerTestConstants.All_MESSAGE_JSON;
-import static com.daniel.sipos.demoproject.ControllerTestConstants.EMIL_FEKETE_GMAIL_COM;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.MESSAGE_BY_USERS_JSON;
-import static com.daniel.sipos.demoproject.ControllerTestConstants.SIPOS_HERR_DANI_GMAIL_COM;
+import static com.daniel.sipos.demoproject.ControllerTestConstants.TEST_EMAIL_ADDRESS_ONE;
+import static com.daniel.sipos.demoproject.ControllerTestConstants.TEST_EMAIL_ADDRESS_TWO;
 import static com.daniel.sipos.demoproject.ControllerTestConstants.TEST_LOCAL_DATE_TIME;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -51,8 +51,8 @@ public class MessageControllerTest {
   public void findAllByUsers() throws Exception {
     this.mockMvc.perform(
             get("/api/message/find-all-by-users")
-                .param("fromEmail", SIPOS_HERR_DANI_GMAIL_COM)
-                .param("toEmail", EMIL_FEKETE_GMAIL_COM))
+                .param("fromEmail", TEST_EMAIL_ADDRESS_ONE)
+                .param("toEmail", TEST_EMAIL_ADDRESS_TWO))
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().string(containsString(MESSAGE_BY_USERS_JSON)));
@@ -74,8 +74,8 @@ public class MessageControllerTest {
     return MessageDomain.builder()
         .id(0L)
         .message("Test")
-        .fromUserEmail(SIPOS_HERR_DANI_GMAIL_COM)
-        .toUserEmail(EMIL_FEKETE_GMAIL_COM)
+        .fromUserEmail(TEST_EMAIL_ADDRESS_ONE)
+        .toUserEmail(TEST_EMAIL_ADDRESS_TWO)
         .insertionDateTime(TEST_LOCAL_DATE_TIME)
         .build();
   }

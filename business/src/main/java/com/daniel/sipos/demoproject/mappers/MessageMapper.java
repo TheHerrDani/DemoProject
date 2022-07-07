@@ -2,7 +2,7 @@ package com.daniel.sipos.demoproject.mappers;
 
 import com.daniel.sipos.demoproject.domain.MessageDomain;
 import com.daniel.sipos.demoproject.entities.Message;
-import com.daniel.sipos.demoproject.entities.User;
+import com.daniel.sipos.demoproject.entities.UserTable;
 import com.daniel.sipos.demoproject.repositories.UserRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,20 @@ public class MessageMapper {
     return MessageDomain.builder()
         .id(message.getId())
         .message(message.getMessage())
-        .toUserEmail(message.getToUser().getEmailAddress())
-        .fromUserEmail(message.getFromUser().getEmailAddress())
+        .toUserEmail(message.getToUserTable().getEmailAddress())
+        .fromUserEmail(message.getFromUserTable().getEmailAddress())
         .insertionDateTime(message.getInsertionDateTime())
         .build();
   }
 
   public Message toMessage(MessageDomain messageDomain) {
-    Optional<User> fromUser = userRepository.findUserByEmail(messageDomain.getFromUserEmail());
-    Optional<User> toUser = userRepository.findUserByEmail(messageDomain.getToUserEmail());
+    Optional<UserTable> fromUser = userRepository.findUserByEmail(messageDomain.getFromUserEmail());
+    Optional<UserTable> toUser = userRepository.findUserByEmail(messageDomain.getToUserEmail());
     return Message.builder()
         .id(messageDomain.getId())
         .message(messageDomain.getMessage())
-        .toUser(toUser.orElseThrow())
-        .fromUser(fromUser.orElseThrow())
+        .toUserTable(toUser.orElseThrow())
+        .fromUserTable(fromUser.orElseThrow())
         .insertionDateTime(messageDomain.getInsertionDateTime())
         .build();
   }

@@ -1,8 +1,8 @@
 package com.daniel.sipos.demoproject;
 
 
-import static com.daniel.sipos.demoproject.BusinessTestConstants.EMIL_FEKETE_GMAIL_COM;
-import static com.daniel.sipos.demoproject.BusinessTestConstants.SIPOS_HERR_DANI_GMAIL_COM;
+import static com.daniel.sipos.demoproject.BusinessTestConstants.TEST_EMAIL_ADDRESS_ONE;
+import static com.daniel.sipos.demoproject.BusinessTestConstants.TEST_EMAIL_ADDRESS_TWO;
 import static com.daniel.sipos.demoproject.BusinessTestConstants.TEST_LOCAL_DATE_TIME;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,18 +30,17 @@ public class MessageServiceTest {
   @Test
   public void findAllMessagesByUsers() {
     List<MessageDomain> messages =
-        messageService.findAllMessagesByUsers(SIPOS_HERR_DANI_GMAIL_COM, EMIL_FEKETE_GMAIL_COM);
+        messageService.findAllMessagesByUsers(TEST_EMAIL_ADDRESS_ONE, TEST_EMAIL_ADDRESS_TWO);
     assertThat(messages).contains(getSpecificMessageDomain());
   }
 
   @Test
   public void saveMessage() {
     MessageDomain createdMessage = getNewMessageDomain();
-    int size = messageService.findAllMessages().size();
     MessageDomain savedMessage = messageService.saveMessage(createdMessage);
     assertThat(savedMessage.getMessage()).isEqualTo(("RANDOM"));
-    assertThat(savedMessage.getFromUserEmail()).isEqualTo(SIPOS_HERR_DANI_GMAIL_COM);
-    assertThat(savedMessage.getToUserEmail()).isEqualTo(EMIL_FEKETE_GMAIL_COM);
+    assertThat(savedMessage.getFromUserEmail()).isEqualTo(TEST_EMAIL_ADDRESS_ONE);
+    assertThat(savedMessage.getToUserEmail()).isEqualTo(TEST_EMAIL_ADDRESS_TWO);
     assertThat(savedMessage.getInsertionDateTime()).isEqualTo(TEST_LOCAL_DATE_TIME);
   }
 
@@ -49,8 +48,8 @@ public class MessageServiceTest {
     return MessageDomain.builder()
         .id(1L)
         .message("Hello!")
-        .fromUserEmail(SIPOS_HERR_DANI_GMAIL_COM)
-        .toUserEmail(EMIL_FEKETE_GMAIL_COM)
+        .fromUserEmail(TEST_EMAIL_ADDRESS_ONE)
+        .toUserEmail(TEST_EMAIL_ADDRESS_TWO)
         .insertionDateTime(TEST_LOCAL_DATE_TIME)
         .build();
   }
@@ -59,8 +58,8 @@ public class MessageServiceTest {
     return MessageDomain.builder()
         .id(1L)
         .message("RANDOM")
-        .fromUserEmail(SIPOS_HERR_DANI_GMAIL_COM)
-        .toUserEmail(EMIL_FEKETE_GMAIL_COM)
+        .fromUserEmail(TEST_EMAIL_ADDRESS_ONE)
+        .toUserEmail(TEST_EMAIL_ADDRESS_TWO)
         .insertionDateTime(TEST_LOCAL_DATE_TIME)
         .build();
   }

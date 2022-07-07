@@ -1,21 +1,21 @@
 package com.daniel.sipos.demoproject.mappers;
 
 import com.daniel.sipos.demoproject.domain.UserDomain;
-import com.daniel.sipos.demoproject.entities.User;
+import com.daniel.sipos.demoproject.entities.UserTable;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-  public UserDomain toUserDomain(User user) {
+  public UserDomain toUserDomain(UserTable userTable) {
     return UserDomain.builder()
-        .id(user.getId())
-        .emailAddress(user.getEmailAddress())
-        .fullName(user.getFullName())
+        .id(userTable.getId())
+        .emailAddress(userTable.getEmailAddress())
+        .fullName(userTable.getFullName())
         .build();
   }
 
-  public User toUser(UserDomain userDomain) {
-    return User.builder()
+  public UserTable toUser(UserDomain userDomain) {
+    return UserTable.builder()
         .id(userDomain.getId())
         .emailAddress(userDomain.getEmailAddress())
         .fullName(userDomain.getFullName())

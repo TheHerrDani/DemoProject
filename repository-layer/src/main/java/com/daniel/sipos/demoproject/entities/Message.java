@@ -29,11 +29,11 @@ public class Message {
 
   @OneToOne()
   @JoinColumn(name = "from_user", referencedColumnName = "id")
-  private User fromUser;
+  private UserTable fromUserTable;
 
   @OneToOne()
   @JoinColumn(name = "to_user", referencedColumnName = "id")
-  private User toUser;
+  private UserTable toUserTable;
 
   @Column(name = "message", nullable = false)
   private String message;
