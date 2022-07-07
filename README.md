@@ -1,7 +1,7 @@
 ### How to run the project
 
 #### Download this docker compose file:
-#### [DOCKER COMPOSE FILE](https://github.com/TheHerrDani/demo-project/blob/master/production/docker-compose.yml)
+#### [DOCKER COMPOSE FILE](https://github.com/TheHerrDani/DemoProject-BackEnd/blob/main/demo/docker-compose.yml)
 #### In a cmd tool run the docker compose file:
 ##### docker compose up
 
