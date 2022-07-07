@@ -3,17 +3,10 @@ services:
   api:
     image: 'herrdani/demo-project_server:latest'
     hostname: api
-    build:
-      dockerfile: Dockerfile
-      context: .
     ports:
       - '8080:8080'
   client:
     image: 'herrdani/demo-project_frontend:latest'
     hostname: client
-    build:
-      dockerfile: Dockerfile
-      context: ../DemoProject-Frontend/
     ports:
       - '3000:3000'
-
